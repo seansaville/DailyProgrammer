@@ -16,24 +16,38 @@ public class SmartStackList {
 		// This new node needs to go on top of the stack, and in the correct place
 		// in the sorted list.
 		
-		newNode.nextStack = this.firstStack;
-		this.firstStack.prevStack = newNode;
-		this.firstStack = newNode;
+		if (firstStack == null) {
+			firstStack = newNode;
+		} else {
+			newNode.nextStack = this.firstStack;
+			firstStack.prevStack = newNode;
+			firstStack = newNode;
+		}
 		
 		if (firstSorted == null) {
-			this.firstSorted = newNode;
+			firstSorted = newNode;
 		} else {
 			boolean placed = false;
 			SmartStackListNode current = firstSorted;
 			while (!placed) {
 				if (newNode.value > current.value) {
-					current = current.nextSorted;
+					if (current.nextSorted != null) {
+						current = current.nextSorted;
+					} else {
+						current.nextSorted = newNode;
+						placed = true;
+					}
 				} else {
-					newNode.nextSorted = current.nextSorted;
-					current.nextSorted.prevSorted = newNode;
-					newNode.prevSorted = current;
-					current.nextSorted = newNode;
-					placed = true;
+					if (current.prevSorted != null) {
+						newNode.nextSorted = current;
+						newNode.prevSorted = current.prevSorted;
+						current.prevSorted.nextSorted = newNode;
+						current.prevSorted = newNode;
+						placed = true;
+					} else {
+						current.prevSorted = newNode;
+						newNode.nextSorted = current;
+					}
 				}
 			}
 		}
@@ -58,7 +72,6 @@ public class SmartStackList {
 	}
 	
 	public void removeGreater(int num) {
-		//TODO: remove all numbers greater than num from the list
 		SmartStackListNode current = firstSorted;
 		while (current.value <= num) {
 			if (current.nextSorted != null) {
