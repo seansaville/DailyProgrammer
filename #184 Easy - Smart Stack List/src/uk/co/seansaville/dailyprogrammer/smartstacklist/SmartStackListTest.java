@@ -9,13 +9,12 @@ public class SmartStackListTest {
 		
 		// Generate a random number between 1 and 40
 		int n = new Random().nextInt(40) + 1;
-		System.out.println("Generating " + n + " numbers.");
+		System.out.println("Generating " + n + " numbers.\n");
 		
 		// Push n random numbers between -1000 and 1000 onto the list
 		Random gen = new Random();
 		for (int i = 0; i < n; i++) {
 			int toPush = gen.nextInt(2000) - 999;
-			System.out.println("Pushed " + toPush);
 			test.push(toPush);
 		}
 		
@@ -25,7 +24,7 @@ public class SmartStackListTest {
 		System.out.println("\nSorted order:");
 		test.displaySorted();
 		
-		System.out.println("Number of items in stack: " + test.size());
+		System.out.println("\nNumber of items in stack: " + test.size());
 		
 		// Generate a random number between -1000 and 1000, remove every number
 		// greater than this

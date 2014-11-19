@@ -35,6 +35,7 @@ public class SmartStackList {
 						current = current.nextSorted;
 					} else {
 						current.nextSorted = newNode;
+						newNode.prevSorted = current;
 						placed = true;
 					}
 				} else {
@@ -47,6 +48,8 @@ public class SmartStackList {
 					} else {
 						current.prevSorted = newNode;
 						newNode.nextSorted = current;
+						firstSorted = newNode;
+						placed = true;
 					}
 				}
 			}
@@ -56,8 +59,15 @@ public class SmartStackList {
 	public int pop() {
 		SmartStackListNode removed = firstStack;
 		int num = removed.value;
+		
+		// Fix the stack order
 		firstStack = removed.nextStack;
 		firstStack.prevStack = null;
+		
+		// Fix the sorted order
+		removed.prevSorted.nextSorted = removed.nextSorted;
+		removed.nextSorted.prevSorted = removed.prevSorted;
+
 		return num;
 	}
 	
@@ -80,14 +90,13 @@ public class SmartStackList {
 				return;
 			}
 		}
+
 		while (current != null) {
-			// We need to remove current from the list
 			current.prevStack.nextStack = current.nextStack;
 			current.prevSorted.nextSorted = current.nextSorted;
 			current.nextStack.prevStack = current.prevStack;
 			current.nextSorted.prevSorted = current.prevSorted;
 			current = current.nextSorted;
-			
 		}
 	}
 	
