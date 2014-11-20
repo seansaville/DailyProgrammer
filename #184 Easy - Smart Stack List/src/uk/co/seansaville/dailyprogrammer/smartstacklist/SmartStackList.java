@@ -92,10 +92,31 @@ public class SmartStackList {
 		}
 
 		while (current != null) {
-			current.prevStack.nextStack = current.nextStack;
-			current.prevSorted.nextSorted = current.nextSorted;
-			current.nextStack.prevStack = current.prevStack;
-			current.nextSorted.prevSorted = current.prevSorted;
+			// We need to remove the node from the stack and from the sorted list
+			// 3 cases: current is the start/middle/end of the list
+			
+			// Stack:
+			if (current.prevStack == null) {
+				firstStack = current.nextStack;
+				firstStack.prevStack = null;
+			} else if (current.nextStack == null) {
+				current.prevStack.nextStack = null;
+			} else {
+				current.prevStack.nextStack = current.nextStack;
+				current.nextStack.prevStack = current.prevStack;
+			}
+
+			// Sorted:
+			if (current.prevSorted == null) {
+				firstSorted = current.nextSorted;
+				firstSorted.prevSorted = null;
+			} else if (current.nextSorted == null) {
+				current.prevSorted.nextSorted = null;
+			} else {
+				current.prevSorted.nextSorted = current.nextSorted;
+				current.nextSorted.prevSorted = current.prevSorted;
+			}
+
 			current = current.nextSorted;
 		}
 	}
