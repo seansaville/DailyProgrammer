@@ -39,8 +39,9 @@ public class SmartStackListTest {
 		test.displaySorted();
 		
 		// Pop half of the list
+		int size = test.size();
 		System.out.print("\nPopped: ");
-		for (int i = 0; i < n/2; i++) {
+		for (int i = 0; i < size/2; i++) {
 			System.out.print(test.pop() + " ");
 		}
 		

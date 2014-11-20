@@ -62,11 +62,19 @@ public class SmartStackList {
 		
 		// Fix the stack order
 		firstStack = removed.nextStack;
-		firstStack.prevStack = null;
+		if (firstStack != null) {
+			firstStack.prevStack = null;
+		}
 		
 		// Fix the sorted order
-		removed.prevSorted.nextSorted = removed.nextSorted;
-		removed.nextSorted.prevSorted = removed.prevSorted;
+		if (removed.prevSorted == null) {
+			firstSorted = removed.nextSorted;
+		} else if (removed.nextSorted == null) {
+			removed.prevSorted.nextSorted = removed.nextSorted;
+		} else {
+			removed.prevSorted.nextSorted = removed.nextSorted;
+			removed.nextSorted.prevSorted = removed.prevSorted;	
+		}
 
 		return num;
 	}
@@ -98,7 +106,9 @@ public class SmartStackList {
 			// Stack:
 			if (current.prevStack == null) {
 				firstStack = current.nextStack;
-				firstStack.prevStack = null;
+				if (firstStack != null) {
+					firstStack.prevStack = null;
+				}
 			} else if (current.nextStack == null) {
 				current.prevStack.nextStack = null;
 			} else {
@@ -109,7 +119,9 @@ public class SmartStackList {
 			// Sorted:
 			if (current.prevSorted == null) {
 				firstSorted = current.nextSorted;
-				firstSorted.prevSorted = null;
+				if (firstSorted != null) {
+					firstSorted.prevSorted = null;
+				}
 			} else if (current.nextSorted == null) {
 				current.prevSorted.nextSorted = null;
 			} else {
