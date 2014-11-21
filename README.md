@@ -9,4 +9,4 @@ If you've never tried out /r/DailyProgrammer before, you've been missing out! :)
 
 ### Challenges completed
 
-[#184 Easy - Smart Stack List](http://www.reddit.com/r/dailyprogrammer/comments/2j5929/10132014_challenge_184_easy_smart_stack_list/)
+[#184 Easy - Smart Stack List](http://www.reddit.com/r/dailyprogrammer/comments/2j5929/10132014_challenge_184_easy_smart_stack_list/) (Java)
