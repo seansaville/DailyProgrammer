@@ -32,8 +32,24 @@ pet.prototype.growUp = function() {
 	this.age += 1;
 };
 
-pet.prototype.updateHealth = function() {
-	if (this.hunger == 0) {
-		this.health = 0;
-	}
+pet.prototype.sleep = function() {
+	this.sleeping = true;
+};
+
+pet.prototype.heal = function() {
+	this.sick = false;
+	this.health += 20;
 }
+
+pet.prototype.updateHealth = function() {
+	if (this.hunger == 0 || this.poop == 5) {
+		this.health = 0;
+	} else {
+		//TODO: come up with formula to update health based on hunger, happiness and
+		// discipline
+		if (this.sick) {
+			// When a pet is sick, its health is reduced by a flat rate
+			this.health -= 20;
+		}
+	}
+};
