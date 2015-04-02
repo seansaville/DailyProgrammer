@@ -2,6 +2,7 @@
  * /r/DailyProgrammer Challenge #197 Easy - ISBN Validator
  * Takes an ISBN number (without hyphens) from the command line and validates it.
  */
+ 
 #include <stdio.h>
 
 int main(int argc, char **argv) {
