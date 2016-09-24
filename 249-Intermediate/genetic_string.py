@@ -122,7 +122,7 @@ def genetic_string_gen(target, popsize, mutchance):
         fittestcandidatescore = sys.maxsize
 
         for i in range(popsize):
-        	# Generate a new member of the population
+            # Generate a new member of the population
             pair = sel_breeding_pair(popfitness)
             child = mutate(breed_strings(pair[0], pair[1]), mutchance)
             # Keep track of the best-scoring child so far
@@ -149,7 +149,7 @@ def main():
         genetic_string_gen(target, popsize, mutchance)
     except:
         print("Usage: python3 genetic_string.py <target string> "
-        	"<population size> <mutation chance [0 - 1]>")
+            "<population size> <mutation chance [0 - 1]>")
 
 if __name__ == '__main__':
     main()
