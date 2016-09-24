@@ -15,4 +15,6 @@ If you've never tried out /r/DailyProgrammer before, you've been missing out! :)
 
 [#207 Easy - DNA Replication](http://www.reddit.com/r/dailyprogrammer/comments/2zyipu/20150323_challenge_207_easy_bioinformatics_1_dna/) (Python)
 
+[#249 Intermediate - Hello World Genetic Algorithm](https://www.reddit.com/r/dailyprogrammer/comments/40rs67/20160113_challenge_249_intermediate_hello_world/) (Python)
+
 [#275 Easy - Splurthian Chemistry 101](http://www.reddit.com/r/dailyprogrammer/comments/4savyr/20160711_challenge_275_easy_splurthian_chemistry/) (C)
